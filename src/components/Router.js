@@ -6,6 +6,7 @@ import DetailsCoche from './DetailsCoche';
 import { useParams } from 'react-router-dom';
 import UpdateCoche from './UpdateCoche';
 import CreateCoche from './CreateCoche';
+import './CochesStyles.css';
 
 export default class Router extends Component {
   render() {
@@ -22,13 +23,15 @@ export default class Router extends Component {
 
     return (
       <BrowserRouter>
-      <Menu />
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/details/:idcoche' element={<DetailsCocheElement />}/>
-        <Route path='/update/:idcoche' element={<UpdateCocheElement />}/>
-        <Route path='/createcoche' element={<CreateCoche />}/>
-      </Routes>
+        <Menu />
+        <div style={{ padding: '20px' }}>
+          <Routes>
+            <Route path='/' element={<Home />}/>
+            <Route path='/details/:idcoche' element={<DetailsCocheElement />}/>
+            <Route path='/update/:idcoche' element={<UpdateCocheElement />}/>
+            <Route path='/createcoche' element={<CreateCoche />}/>
+          </Routes>
+        </div>
       </BrowserRouter>
     )
   }

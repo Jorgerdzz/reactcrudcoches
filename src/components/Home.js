@@ -57,34 +57,107 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Coches</h1>
-        <table className='table table-primary table-striped'>
-          <thead>
-            <tr>
-              <th>MARCA</th>
-              <th>MODELO</th>
-              <th>ACCIONES</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.state.coches.map((coche, index)=> {
-                return(
-                  <tr key={index}>
-                    <td>{coche.marca}</td>
-                    <td>{coche.modelo}</td>
-                    <td>
-                      <NavLink to={"/details/" + coche.idCoche} className="btn btn-success me-2">Detalles</NavLink>
-                      <NavLink to={"/update/" + coche.idCoche} className="btn btn-warning me-2">Update</NavLink>
-                      <button onClick={this.deleteCoche} value={coche.idCoche} className='btn btn-danger' ref={this.botonEliminar}>Delete</button>
-                    </td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table>
+      <div className="container" style={{ animation: 'fadeIn 0.6s ease-out' }}>
+        <h1 style={{
+          color: 'white',
+          fontWeight: '800',
+          fontSize: '2.5rem',
+          marginBottom: '30px',
+          textAlign: 'center',
+          textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
+        }}>
+          🚗 Gestión de Coches
+        </h1>
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.95)',
+          backdropFilter: 'blur(10px)',
+          borderRadius: '20px',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+          overflow: 'hidden'
+        }}>
+          <table className='table table-hover mb-0'>
+            <thead style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white'
+            }}>
+              <tr>
+                <th style={{ padding: '15px', border: 'none', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>MARCA</th>
+                <th style={{ padding: '15px', border: 'none', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>MODELO</th>
+                <th style={{ padding: '15px', border: 'none', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                this.state.coches.map((coche, index)=> {
+                  return(
+                    <tr key={index} style={{
+                      transition: 'all 0.3s ease',
+                      borderBottom: '1px solid #f0f0f0'
+                    }}>
+                      <td style={{ padding: '15px', verticalAlign: 'middle', fontWeight: '500' }}>{coche.marca}</td>
+                      <td style={{ padding: '15px', verticalAlign: 'middle', fontWeight: '500' }}>{coche.modelo}</td>
+                      <td style={{ padding: '15px', verticalAlign: 'middle' }}>
+                        <NavLink 
+                          to={"/details/" + coche.idCoche} 
+                          className="btn btn-success me-2"
+                          style={{
+                            borderRadius: '10px',
+                            padding: '8px 16px',
+                            fontWeight: '600',
+                            fontSize: '0.85rem',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px',
+                            transition: 'all 0.3s ease',
+                            border: 'none',
+                            boxShadow: '0 4px 15px rgba(40, 167, 69, 0.2)'
+                          }}
+                        >
+                          👁️ Detalles
+                        </NavLink>
+                        <NavLink 
+                          to={"/update/" + coche.idCoche} 
+                          className="btn btn-warning me-2"
+                          style={{
+                            borderRadius: '10px',
+                            padding: '8px 16px',
+                            fontWeight: '600',
+                            fontSize: '0.85rem',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px',
+                            transition: 'all 0.3s ease',
+                            border: 'none',
+                            boxShadow: '0 4px 15px rgba(255, 193, 7, 0.2)'
+                          }}
+                        >
+                          ✏️ Editar
+                        </NavLink>
+                        <button 
+                          onClick={this.deleteCoche} 
+                          value={coche.idCoche} 
+                          className='btn btn-danger' 
+                          ref={this.botonEliminar}
+                          style={{
+                            borderRadius: '10px',
+                            padding: '8px 16px',
+                            fontWeight: '600',
+                            fontSize: '0.85rem',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px',
+                            transition: 'all 0.3s ease',
+                            border: 'none',
+                            boxShadow: '0 4px 15px rgba(220, 53, 69, 0.2)'
+                          }}
+                        >
+                          🗑️ Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                })
+              }
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }
